@@ -3,6 +3,8 @@ const fns = require('./funcoes');
 
 const caminho = path.join(__dirname, '..', 'projeto_1', 'legendas');
 
+const simbolos = ['.', '?', '-', '"', '_', '<i>', '</i>', '\r', '[', ']', '(', ')'];
+
 fns.lerDiretorio(caminho)
     .then(arqs => fns.filtrarPorExtensao(arqs, '.srt'))
     .then(arq => fns.lerArquivos(arq))
@@ -19,4 +21,5 @@ fns.lerDiretorio(caminho)
     .then(arrayPorQubraDeLinha => fns.removerSeVazio(arrayPorQubraDeLinha))
     .then(arrayLinhasComTimeLine => fns.removeLinhaComTimeLine(arrayLinhasComTimeLine))
     .then(arrayLinhasComNumeros => fns.removerSeApenasNumero(arrayLinhasComNumeros))
+    .then(fns.removerSimbolos(simbolos))
     .then(console.log);

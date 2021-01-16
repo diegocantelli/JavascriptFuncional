@@ -63,6 +63,19 @@ function removerSeApenasNumero(array) {
         return num !== num;
     })
 }
+
+function removerSimbolos(simbolos) {
+    return function (array) {
+        return array.map(el => {
+            let textoSemSimbolos = el;
+            simbolos.forEach(simbolo => {
+                //ao fazer o join em branco, a nova string será retornada sem o simbolo
+                textoSemSimbolos = textoSemSimbolos.split(simbolo).join('');
+            })
+            return textoSemSimbolos;
+        })
+    }
+}
 module.exports = {
     lerDiretorio,
     lerArquivo,
@@ -70,5 +83,6 @@ module.exports = {
     removerSeVazio,
     removeLinhaComTimeLine,
     removerSeApenasNumero,
+    removerSimbolos,
     filtrarPorExtensao
 }
