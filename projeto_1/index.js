@@ -17,4 +17,5 @@ fns.lerDiretorio(caminho)
 
     //remove as linhas em branco
     .then(arrayPorQubraDeLinha => fns.removerSeVazio(arrayPorQubraDeLinha))
+    .then(arrayLinhasComTimeLine => fns.removeLinhaComTimeLine(arrayLinhasComTimeLine))
     .then(console.log);

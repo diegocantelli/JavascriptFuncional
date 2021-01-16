@@ -43,6 +43,10 @@ function lerArquivos(caminhos) {
     return Promise.all(caminhos.map(caminho => lerArquivo(caminho)))
 }
 
+function removeLinhaComTimeLine(array) {
+    return array.filter(el => !el.includes('-->'))
+}
+
 function removerSeVazio(array) {
     //ao usar o trim, caso o conteúdo da string seja vazio, irá converter para falso, logo não
     //serão retornadas pelo filter, que só retorna os casos true
@@ -53,5 +57,6 @@ module.exports = {
     lerArquivo,
     lerArquivos,
     removerSeVazio,
+    removeLinhaComTimeLine,
     filtrarPorExtensao
 }
