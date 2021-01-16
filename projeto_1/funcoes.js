@@ -52,11 +52,23 @@ function removerSeVazio(array) {
     //serão retornadas pelo filter, que só retorna os casos true
     return array.filter(el => el.trim())
 }
+
+function removerSeApenasNumero(array) {
+    array.filter(el => {
+        //se o conteúdo da linha sem os espaços convertido para inteiro resultar em um número válido
+        // então num será igual a ele mesmo
+        //se o conteúdo da linha sem os espaços convertido para inteiro NÂO resultar em um número válido(NaN)
+        // então num será diferente de num, pois NaN nunca é igual a ele mesmo
+        const num = parseInt(el.trim());
+        return num !== num;
+    })
+}
 module.exports = {
     lerDiretorio,
     lerArquivo,
     lerArquivos,
     removerSeVazio,
     removeLinhaComTimeLine,
+    removerSeApenasNumero,
     filtrarPorExtensao
 }
