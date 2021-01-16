@@ -42,9 +42,16 @@ function lerArquivo(caminho) {
 function lerArquivos(caminhos) {
     return Promise.all(caminhos.map(caminho => lerArquivo(caminho)))
 }
+
+function removerSeVazio(array) {
+    //ao usar o trim, caso o conteúdo da string seja vazio, irá converter para falso, logo não
+    //serão retornadas pelo filter, que só retorna os casos true
+    return array.filter(el => el.trim())
+}
 module.exports = {
     lerDiretorio,
     lerArquivo,
     lerArquivos,
+    removerSeVazio,
     filtrarPorExtensao
 }
