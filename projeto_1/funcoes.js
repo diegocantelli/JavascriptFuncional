@@ -76,6 +76,18 @@ function removerSimbolos(simbolos) {
         })
     }
 }
+
+function agruparPalavras(arrayPalavras) {
+    return arrayPalavras.reduce((palavrasAgrupadas, palavra) => {
+        const p = palavra.toLowerCase();
+        if (palavrasAgrupadas[p]) {
+            palavrasAgrupadas[p] += 1;
+        } else {
+            palavrasAgrupadas[p] = 1;
+        }
+        return palavrasAgrupadas;
+    }, {})
+}
 module.exports = {
     lerDiretorio,
     lerArquivo,
@@ -84,5 +96,6 @@ module.exports = {
     removeLinhaComTimeLine,
     removerSeApenasNumero,
     removerSimbolos,
+    agruparPalavras,
     filtrarPorExtensao
 }

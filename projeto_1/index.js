@@ -5,6 +5,8 @@ const caminho = path.join(__dirname, '..', 'projeto_1', 'legendas');
 
 const simbolos = ['.', '?', '-', '"', '_', '<i>', '</i>', '\r', '[', ']', '(', ')'];
 
+const separarPorPalavras = (array) => array.join(' ');
+
 fns.lerDiretorio(caminho)
     .then(arqs => fns.filtrarPorExtensao(arqs, '.srt'))
     .then(arq => fns.lerArquivos(arq))
@@ -22,4 +24,8 @@ fns.lerDiretorio(caminho)
     .then(arrayLinhasComTimeLine => fns.removeLinhaComTimeLine(arrayLinhasComTimeLine))
     .then(arrayLinhasComNumeros => fns.removerSeApenasNumero(arrayLinhasComNumeros))
     .then(fns.removerSimbolos(simbolos))
+    .then(separarPorPalavras)
+    .then(fns.removerSeVazio)
+    .then(fns.agruparPalavras)
+    .then(fns.removerSeApenasNumero)
     .then(console.log);
