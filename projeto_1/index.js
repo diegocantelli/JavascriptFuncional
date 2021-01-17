@@ -28,4 +28,6 @@ fns.lerDiretorio(caminho)
     .then(fns.removerSeVazio)
     .then(fns.agruparPalavras)
     .then(fns.removerSeApenasNumero)
+    .then(fns.agruparPalavras)
+    .then(fns.ordenarPorAtributoNumerico('qtde', 'desc'))
     .then(console.log);

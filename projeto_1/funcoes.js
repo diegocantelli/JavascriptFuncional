@@ -78,15 +78,31 @@ function removerSimbolos(simbolos) {
 }
 
 function agruparPalavras(arrayPalavras) {
-    return arrayPalavras.reduce((palavrasAgrupadas, palavra) => {
+    return Object.values(arrayPalavras.reduce((palavrasAgrupadas, palavra) => {
         const p = palavra.toLowerCase();
-        if (palavrasAgrupadas[p]) {
-            palavrasAgrupadas[p] += 1;
-        } else {
-            palavrasAgrupadas[p] = 1;
+        const qtde = palavrasAgrupadas[p].qtde ? palavrasAgrupadas[qtde] + 1 : 1;
+        palavrasAgrupadas[p] = {
+            elemento: p,
+            qtde
         }
         return palavrasAgrupadas;
-    }, {})
+    }, {}))
+}
+
+function ordenarPorAtributoNumerico(attr, ordem = 'asc') {
+    return function (array) {
+        //caso o primeiro valor do atributo(attr) dentro do array - o segundo 
+        //valor do atributo(attr) dentro do array seja maior que zero, o array
+        //será ordenado de forma ascendente 
+        const asc = (elemento1, elemento2) => elemento1[attr] - elemento2[attr];
+
+        //Caso o segundo elemento do array for menor que o primeiro, o array
+        //será ordenado de forma descendente
+        const desc = (elemento1, elemento2) => elemento2[attr] - elemento1[attr];
+
+        //é passada a função de ordenação com base no parâmetro passado
+        return array.sort(ordem === 'asc' ? asc : desc);
+    }
 }
 module.exports = {
     lerDiretorio,
@@ -97,5 +113,6 @@ module.exports = {
     removerSeApenasNumero,
     removerSimbolos,
     agruparPalavras,
+    ordenarPorAtributoNumerico,
     filtrarPorExtensao
 }
