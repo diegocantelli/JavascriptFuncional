@@ -15,4 +15,7 @@ const obs = Observable.create(subscriber => {
     }
 })
 
-obs.subscribe(msg => console.log(msg));
+obs.subscribe(
+    msg => console.log(`Sucesso: ${msg}`),
+    erro => console.log(`Erro: ${erro}`),
+    complete => console.log(`Complete: ${complete}`));
