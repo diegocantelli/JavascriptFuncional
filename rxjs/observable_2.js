@@ -7,7 +7,12 @@ const obs = Observable.create(subscriber => {
     subscriber.next('É')
     subscriber.next('Bem')
     subscriber.next('Poderoso')
-    subscriber.complete()
+
+    if (Math.random() > 0.5) {
+        subscriber.complete()
+    } else {
+        subscriber.error('Ocorreu algum erro');
+    }
 })
 
 obs.subscribe(msg => console.log(msg));
