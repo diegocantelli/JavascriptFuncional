@@ -7,3 +7,7 @@ const {
 const {
     last
 } = require('rxjs/operators');
+
+//O operador of emite seus valores um por vez
+of ('1', 'teste', false)
+.subscribe(valor => console.log(valor));
